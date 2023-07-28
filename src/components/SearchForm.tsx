@@ -6,7 +6,7 @@ const SearchForm = () => {
     <div className="flex items-center justify-center">
       <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-10">
         <div className="flex flex-col mr-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
+          <label className="text-gray-700 text-sm font-bold mb-2">
             Search for Player Stats
           </label>
           <div className="flex flex-row space-x-2">

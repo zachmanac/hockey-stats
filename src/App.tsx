@@ -28,20 +28,10 @@ function App() {
   return (
     <div className="bg-gray-500 h-screen flex items-center justify-center">
       <div className='w-[90%] bg-white rounded p-8 h-[90%]'>
-        <h1 className="text-3xl text-center text-red-500 bg-black rounded">Hockey Stats App</h1>
+        <h1 className="text-5xl text-center text-red-500 bg-black rounded pb-3">Hockey Stats App</h1>
         <SearchForm />
-        {playerStats && playerStats.map((player: any) => (
-          <div key={player.playerId} className='bg-gray-100 max-w-lg mx-auto p-4'>
-            <p className='text-xl font-semibold'>{player.skaterFullName}</p>
-            <p>Games Played: {player.gamesPlayed}</p>
-            <p>Goals: {player.goals}</p>
-            <p>Assists: {player.assists}</p>
-            <p>Points: {player.points}</p>
-            <p>+/-: {player.plusMinus}</p>
-            <p>PIM: {player.penaltyMinutes}</p>
-          </div>
-        ))}
-        <PlayerStats />
+
+        <PlayerStats playerStats={playerStats} />
       </div>
     </div>
   );
