@@ -14,6 +14,7 @@ interface PlayerStatsProps {
 }
 
 const PlayerStats = ({ playerStats }: PlayerStatsProps) => {
+  console.log('playerStats: in playerstats component', playerStats);
 
   return (
     <div>
