@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface PlayerStatsProps {
-  playerStats: {
+  playerStats: Array<{
     playerId: number;
     skaterFullName: string;
     gamesPlayed: number;
@@ -10,25 +10,36 @@ interface PlayerStatsProps {
     points: number;
     plusMinus: number;
     penaltyMinutes: number;
-  }[];
+  }>;
 }
 
 const PlayerStats = ({ playerStats }: PlayerStatsProps) => {
   console.log('playerStats: in playerstats component', playerStats);
 
   return (
-    <div>
-      {playerStats.map((player: any) => (
-        <div key={player.playerId} className='bg-gray-100 max-w-lg mx-auto p-4'>
-          <p className='text-xl font-semibold'>{player.skaterFullName}</p>
-          <p>Games Played: {player.gamesPlayed}</p>
-          <p>Goals: {player.goals}</p>
-          <p>Assists: {player.assists}</p>
-          <p>Points: {player.points}</p>
-          <p>+/-: {player.plusMinus}</p>
-          <p>PIM: {player.penaltyMinutes}</p>
-        </div>
-      ))}
+    <div className='bg-gray-100 w-[90%] mx-auto text-center min-w-full'>
+      <div className='grid grid-cols-7 font-bold'>
+        <p className='text-left'>Name</p>
+        <p>GP</p>
+        <p>Goals</p>
+        <p>Assists</p>
+        <p>Points</p>
+        <p>+/-</p>
+        <p>PIM</p>
+      </div>
+      <div>
+        {playerStats.map((player: any) => (
+          <div key={player.playerId} className='grid grid-cols-7'>
+            <p className='text-left'>{player.skaterFullName}</p>
+            <p>{player.gamesPlayed}</p>
+            <p>{player.goals}</p>
+            <p>{player.assists}</p>
+            <p>{player.points}</p>
+            <p>{player.plusMinus}</p>
+            <p>{player.penaltyMinutes}</p>
+          </div>
+        ))}
+      </div>
     </div>
   )
 };
