@@ -14,7 +14,9 @@ interface PlayerStatsProps {
 }
 
 const PlayerStats = ({ playerStats }: PlayerStatsProps) => {
-  console.log('playerStats: in playerstats component', playerStats);
+  console.log('playerStats[0]: in playerstats component', playerStats[0]);
+
+  const player = playerStats[0];
 
   return (
     <div>
@@ -31,18 +33,14 @@ const PlayerStats = ({ playerStats }: PlayerStatsProps) => {
           <p>+/-</p>
           <p>PIM</p>
         </div>
-        <div>
-          {playerStats.map((player: any) => (
-            <div key={player.playerId} className='grid grid-cols-7'>
-              <p className='text-left'>{player.skaterFullName}</p>
-              <p>{player.gamesPlayed}</p>
-              <p>{player.goals}</p>
-              <p>{player.assists}</p>
-              <p>{player.points}</p>
-              <p>{player.plusMinus}</p>
-              <p>{player.penaltyMinutes}</p>
-            </div>
-          ))}
+        <div key={player.playerId} className='grid grid-cols-7'>
+          <p className='text-left'>{player.skaterFullName}</p>
+          <p>{player.gamesPlayed}</p>
+          <p>{player.goals}</p>
+          <p>{player.assists}</p>
+          <p>{player.points}</p>
+          <p>{player.plusMinus}</p>
+          <p>{player.penaltyMinutes}</p>
         </div>
       </div>
       )}
