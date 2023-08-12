@@ -8,8 +8,10 @@ import SearchForm from './components/SearchForm';
 function App() {
   const [playerStats, setPlayerStats] = useState<any[]>([]);
   const [fullName, setFullName] = useState('');
+  const [playerStatsTwo, setPlayerStatsTwo] = useState<any[]>([]);
+  const [fullNameTwo, setFullNameTwo] = useState('');
 
-  const getPlayerStats = async (name: string) => {
+  const getPlayerStats = async (name: string, isPlayerTwo: boolean = false) => {
 
 
     try {
@@ -35,7 +37,13 @@ function App() {
       }
 
       const response = await axios.get(URL);
-      setPlayerStats(response.data);
+      
+      if (isPlayerTwo) {
+        setPlayerStatsTwo(response.data);
+      } else {
+        setPlayerStats(response.data);
+      }
+
     } catch (error) {
       console.log('fetch stats error:', error);
     }
@@ -47,6 +55,13 @@ function App() {
     }
   }, [fullName]);
 
+  useEffect(() => {
+    console.log('useEffect for Player Two:', fullNameTwo);
+    if (fullNameTwo.length > 0) {
+      getPlayerStats(fullNameTwo, true);
+    }
+  }, [fullNameTwo]);
+
   console.log("playerstats in app", playerStats);
 
   return (
@@ -54,7 +69,10 @@ function App() {
       <div className='w-[90%] bg-white rounded p-8 h-[90%]'>
         <h1 className="text-5xl text-center text-red-500 bg-black rounded pb-3">Hockey Stats App</h1>
         <SearchForm onSearch={getPlayerStats} />
-        <PlayerStats playerStats={playerStats} />
+        {playerStats.length > 0 && (
+          <SearchForm onSearch={(name) => getPlayerStats(name, true)} isPlayerTwo={true} />
+        )}
+        <PlayerStats playerStats={playerStats} playerStatsTwo={playerStatsTwo} />
       </div>
     </div>
   );
