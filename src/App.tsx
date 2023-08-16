@@ -13,7 +13,6 @@ function App() {
 
   const getPlayerStats = async (name: string, isPlayerTwo: boolean = false) => {
 
-
     try {
       let URL = '';
 
@@ -50,17 +49,16 @@ function App() {
   };
 
   useEffect(() => {
-    if (fullName.length > 0) {
-      getPlayerStats(fullName);
-    }
-  }, [fullName]);
-
-  useEffect(() => {
-    console.log('useEffect for Player Two:', fullNameTwo);
     if (fullNameTwo.length > 0) {
       getPlayerStats(fullNameTwo, true);
     }
   }, [fullNameTwo]);
+
+  useEffect(() => {
+    if (fullName.length > 0) {
+      getPlayerStats(fullName, false);
+    }
+  }, [fullName]);
 
   console.log("playerstats in app", playerStats);
 
@@ -69,9 +67,6 @@ function App() {
       <div className='w-[90%] bg-white rounded p-8 h-[90%]'>
         <h1 className="text-5xl text-center text-red-500 bg-black rounded pb-3">Hockey Stats App</h1>
         <SearchForm onSearch={getPlayerStats} />
-        {playerStats.length > 0 && (
-          <SearchForm onSearch={(name) => getPlayerStats(name, true)} isPlayerTwo={true} />
-        )}
         <PlayerStats playerStats={playerStats} playerStatsTwo={playerStatsTwo} />
       </div>
     </div>

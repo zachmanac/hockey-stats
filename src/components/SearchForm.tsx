@@ -2,16 +2,16 @@ import React, { useState, FormEvent } from 'react';
 
 interface SearchFormProps {
   onSearch: (fullName: string, isPlayerTwo: boolean) => any;
-  isPlayerTwo?: boolean;
 }
 
-const SearchForm = ({ onSearch, isPlayerTwo }: SearchFormProps) => {
+const SearchForm = ({ onSearch }: SearchFormProps) => {
 
   const [fullName, setFullName] = useState('');
   const [fullNameTwo, setFullNameTwo] = useState('');
   const [showErrorMessage, setShowErrorMessage] = useState(false);
   const [showCompareButton, setShowCompareButton] = useState(false)
   const [isComparing, setIsComparing] = useState(false);
+  const [formSearch, setFormSearch] = useState('formOne');
 
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -25,7 +25,12 @@ const SearchForm = ({ onSearch, isPlayerTwo }: SearchFormProps) => {
       return setShowErrorMessage(true);
     }
 
-      onSearch(fullName, isPlayerTwo || false);
+    if(formSearch === 'formTwo') {
+      onSearch(fullNameTwo, true);
+    } else {
+      onSearch(fullName, false);
+    }
+
       setShowErrorMessage(false);
       setShowCompareButton(true);
   };
@@ -50,6 +55,7 @@ const SearchForm = ({ onSearch, isPlayerTwo }: SearchFormProps) => {
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="submit"
+                onClick={(event) => setFormSearch('formOne')}
               >
                 Search
               </button>
@@ -59,8 +65,7 @@ const SearchForm = ({ onSearch, isPlayerTwo }: SearchFormProps) => {
         </div>
       </form>
       {showCompareButton && !isComparing && 
-        <button onClick={() => setIsComparing(true)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-11 ml-5"
-        >
+        <button onClick={() => setIsComparing(true)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-11 ml-5">
           Compare
         </button>
       }
@@ -83,7 +88,8 @@ const SearchForm = ({ onSearch, isPlayerTwo }: SearchFormProps) => {
                 <button
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   type="submit"
-                  >
+                  onClick={(event) => setFormSearch('formTwo')}
+                >
                   Search
                 </button>
               </div>
