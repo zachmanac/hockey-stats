@@ -62,7 +62,7 @@ const SearchForm = ({ onSearch }: SearchFormProps) => {
               </button>
             </div>
           </div>
-          {showErrorMessage && <div className="text-red-500" >Please enter the full name.</div>}
+          {showErrorMessage && fullName.split(' ').length <= 1 && <div className="text-red-500" >Please enter the full name.</div>}
         </div>
       </form>
       {showCompareButton && !isComparing && 
@@ -95,7 +95,7 @@ const SearchForm = ({ onSearch }: SearchFormProps) => {
                 </button>
               </div>
             </div>
-            {showErrorMessage &&  <div className="text-red-500" >Please enter the full name.</div>}
+            {showErrorMessage && fullNameTwo.split(' ').length <= 1 && <div className="text-red-500" >Please enter the full name.</div>}
           </div>
         </form>
       }
