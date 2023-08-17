@@ -60,7 +60,7 @@ function App() {
     }
   }, [fullName]);
 
-  console.log("playerstats in app", playerStats);
+  // console.log("playerstats in app", playerStats);
 
   return (
     <div className="bg-gray-500 h-screen flex items-center justify-center">

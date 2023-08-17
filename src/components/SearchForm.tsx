@@ -13,7 +13,6 @@ const SearchForm = ({ onSearch }: SearchFormProps) => {
   const [isComparing, setIsComparing] = useState(false);
   const [formSearch, setFormSearch] = useState('formOne');
 
-
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -25,14 +24,16 @@ const SearchForm = ({ onSearch }: SearchFormProps) => {
       return setShowErrorMessage(true);
     }
 
-    if(formSearch === 'formTwo') {
+    if (formSearch === 'formTwo') {
       onSearch(fullNameTwo, true);
-    } else {
+    }
+
+    if (formSearch === 'formOne') {
       onSearch(fullName, false);
     }
 
-      setShowErrorMessage(false);
-      setShowCompareButton(true);
+    setShowErrorMessage(false);
+    setShowCompareButton(true);
   };
 
   return (
@@ -55,7 +56,7 @@ const SearchForm = ({ onSearch }: SearchFormProps) => {
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="submit"
-                onClick={(event) => setFormSearch('formOne')}
+                onClick={() => setFormSearch('formOne')}
               >
                 Search
               </button>
@@ -88,13 +89,13 @@ const SearchForm = ({ onSearch }: SearchFormProps) => {
                 <button
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   type="submit"
-                  onClick={(event) => setFormSearch('formTwo')}
+                  onClick={() => setFormSearch('formTwo')}
                 >
                   Search
                 </button>
               </div>
             </div>
-            {showErrorMessage && <div className="text-red-500" >Please enter the full name.</div>}
+            {showErrorMessage &&  <div className="text-red-500" >Please enter the full name.</div>}
           </div>
         </form>
       }

@@ -24,8 +24,8 @@ interface PlayerStatsProps {
 }
 
 const PlayerStats = ({ playerStats, playerStatsTwo }: PlayerStatsProps) => {
-  console.log('playerStats[0]: in playerstats component', playerStats[0]);
-  console.log('playerStatsTwo[0]: in playerstats component', playerStatsTwo[0]);
+  // console.log('playerStats[0]: in playerstats component', playerStats[0]);
+  // console.log('playerStatsTwo[0]: in playerstats component', playerStatsTwo[0]);
 
   const player = playerStats[0];
   const playerTwo = playerStatsTwo[0];
@@ -37,7 +37,7 @@ const PlayerStats = ({ playerStats, playerStatsTwo }: PlayerStatsProps) => {
       ) : (
         <div className='bg-gray-100 w-[90%] mx-auto text-center min-w-full'>
           <div className='grid grid-cols-7 font-bold'>
-            <p className='text-left'>Name</p>
+            <p className='text-left pl-2'>Name</p>
             <p>GP</p>
             <p>Goals</p>
             <p>Assists</p>
@@ -46,7 +46,7 @@ const PlayerStats = ({ playerStats, playerStatsTwo }: PlayerStatsProps) => {
             <p>PIM</p>
           </div>
           <div key={player.playerId} className='grid grid-cols-7'>
-            <p className='text-left'>{player.skaterFullName}</p>
+            <p className='text-left pl-2'>{player.skaterFullName}</p>
             <p>{player.gamesPlayed}</p>
             <p>{player.goals}</p>
             <p>{player.assists}</p>
@@ -55,8 +55,14 @@ const PlayerStats = ({ playerStats, playerStatsTwo }: PlayerStatsProps) => {
             <p>{player.penaltyMinutes}</p>
           </div>
           {playerStatsTwo.length > 0 && (
-            <div key={playerTwo.playerId}>
-              {playerTwo.skaterFullName}
+            <div key={playerTwo.playerId} className='grid grid-cols-7'>
+              <p className='text-left pl-2'>{playerTwo.skaterFullName}</p>
+            <p>{playerTwo.gamesPlayed}</p>
+            <p>{playerTwo.goals}</p>
+            <p>{playerTwo.assists}</p>
+            <p>{playerTwo.points}</p>
+            <p>{playerTwo.plusMinus}</p>
+            <p>{playerTwo.penaltyMinutes}</p>
             </div>
           )}
         </div>
