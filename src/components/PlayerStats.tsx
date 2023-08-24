@@ -36,8 +36,8 @@ const PlayerStats = ({ playerStats, playerStatsTwo }: PlayerStatsProps) => {
         <div></div>
       ) : (
         <div className='bg-gray-100 w-[90%] mx-auto text-center min-w-full'>
-          <div className='grid grid-cols-7 font-bold'>
-            <p className='text-left pl-2'>Name</p>
+          <div className='grid grid-cols-7 font-bold text-right pr-2'>
+            <p className='text-left pl-2'>Player</p>
             <p>GP</p>
             <p>Goals</p>
             <p>Assists</p>
@@ -45,7 +45,7 @@ const PlayerStats = ({ playerStats, playerStatsTwo }: PlayerStatsProps) => {
             <p>+/-</p>
             <p>PIM</p>
           </div>
-          <div key={player.playerId} className='grid grid-cols-7'>
+          <div key={player.playerId} className={`grid grid-cols-7 text-right pr-2 ${playerStatsTwo.length > 0 ? 'bg-gray-200' : ''}`}>
             <p className='text-left pl-2'>{player.skaterFullName}</p>
             <p>{player.gamesPlayed}</p>
             <p>{player.goals}</p>
@@ -55,7 +55,7 @@ const PlayerStats = ({ playerStats, playerStatsTwo }: PlayerStatsProps) => {
             <p>{player.penaltyMinutes}</p>
           </div>
           {playerStatsTwo.length > 0 && (
-            <div key={playerTwo.playerId} className='grid grid-cols-7'>
+            <div key={playerTwo.playerId} className='grid grid-cols-7 text-right pr-2'>
               <p className='text-left pl-2'>{playerTwo.skaterFullName}</p>
             <p>{playerTwo.gamesPlayed}</p>
             <p>{playerTwo.goals}</p>

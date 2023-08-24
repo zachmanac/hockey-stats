@@ -38,7 +38,7 @@ const SearchForm = ({ onSearch }: SearchFormProps) => {
 
   return (
     <div className="flex items-center justify-center space-x-4">
-      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-10" onSubmit={handleSubmit}>
+      <form className=" bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-10" onSubmit={handleSubmit}>
         <div className="flex flex-col mr-4">
           <label className="text-gray-700 text-sm font-bold mb-2">
             Search for Player Stats
@@ -62,7 +62,7 @@ const SearchForm = ({ onSearch }: SearchFormProps) => {
               </button>
             </div>
           </div>
-          {showErrorMessage && fullName.split(' ').length <= 1 && <div className="text-red-500" >Please enter the full name.</div>}
+          {showErrorMessage && (fullName.split(' ').length <= 1) && <div className="text-red-500" >Please enter the full name.</div>}
         </div>
       </form>
       {showCompareButton && !isComparing && 
@@ -95,7 +95,7 @@ const SearchForm = ({ onSearch }: SearchFormProps) => {
                 </button>
               </div>
             </div>
-            {showErrorMessage && fullNameTwo.split(' ').length <= 1 && <div className="text-red-500" >Please enter the full name.</div>}
+            {showErrorMessage && (fullNameTwo.split(' ').length <= 1) && <div className="text-red-500" >Please enter the full name.</div>}
           </div>
         </form>
       }
